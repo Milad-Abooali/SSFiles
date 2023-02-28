@@ -13,11 +13,11 @@ local_path="/etc/test/*"
 IP="SERVERIP"
 password="YOURPASSWORD"
 username="root"
-remote_path="/home/backup/"
+remote_folder="/home/backup"
 
 ### Sync Files
-folder_name=${server_name})_`date +%Y-%M-%d_%H`.avi
-sshpass -p "$password" scp -rC $local_path $username@$IP:$remote_path$folder_name
+remote_path="${remote_folder}/${server_name}_"`date +%Y-%M-%d_%H`
+sshpass -p "$password" scp -rC $local_path $username@$IP:$remote_path$remote_path
 
 ### Add Log
 echo "Files uploaded from '${local_path}'to '${remote_path}' on remote server: ${server_name} (${IP}) " >> /var/log/ssfile.log
